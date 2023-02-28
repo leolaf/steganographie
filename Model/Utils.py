@@ -90,7 +90,6 @@ def find_msg(img_path:str):
 
     msg_size = bytearray_to_int(msg_size_bits)
     
-    # TODO from here it certainly doesn't work
     firstPixel = SIZE_STORAGE + len(msg_bits)
     assert(firstPixel%3 == 0)
     last_pixel = firstPixel + msg_size*8 - len(msg_bits)
