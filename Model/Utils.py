@@ -50,7 +50,7 @@ def hide_msg(msg: str, initial_img_path: str, target_img_path: str):
     msg_size = len(msg) 
     img = open_img(initial_img_path)
     pixels = img.load()
-    width, height = img.size
+    width = img.width
     
     # TODO verify image can contain msg
     
@@ -71,7 +71,7 @@ def hide_msg(msg: str, initial_img_path: str, target_img_path: str):
 def find_msg(img_path:str):
     img = open_img(img_path)
     pixels = img.load()
-    width, height = img.size
+    width = img.width
 
     msg_size_bits = []
     msg_bits = []

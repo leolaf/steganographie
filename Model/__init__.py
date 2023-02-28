@@ -1,1 +1,1 @@
-from .Utils import hide_msg
+from .Utils import hide_msg, find_msg
