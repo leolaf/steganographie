@@ -74,36 +74,42 @@ def find_msg(img_path:str):
     width, height = img.size
 
     msg_size_bits = []
+    msg_bits = []
     for i in range(0,SIZE_STORAGE,3):
         idxPixel = i//3
         r, g, b, a = pixels[idxPixel%width, idxPixel//width]
         msg_size_bits.append(r&1)
-        msg_size_bits.append(g&1)
-        msg_size_bits.append(b&1)
+        if(i+1 < SIZE_STORAGE):
+            msg_size_bits.append(g&1)
+        else:
+            msg_bits.append(g&1)
+        if(i+2 < SIZE_STORAGE):
+            msg_size_bits.append(b&1)
+        else:
+            msg_bits.append(b&1)
 
-    msg_bits = []
-    if(SIZE_STORAGE % 3 > 0):
-        # Store overflow in msg_bits 
-        msg_bits = msg_size_bits[-(SIZE_STORAGE % 3):]
-        # Only keep wanted bits
-        msg_size_bits[:-(SIZE_STORAGE % 3)]
-    
     msg_size = bytearray_to_int(msg_size_bits)
-
-    msg_size -= len(msg_bits)
-
+    
     # TODO from here it certainly doesn't work
-    firstPixel = (SIZE_STORAGE//3 + 1) * 3
-    last_pixel = SIZE_STORAGE+msg_size
+    firstPixel = SIZE_STORAGE + len(msg_bits)
+    assert(firstPixel%3 == 0)
+    last_pixel = firstPixel + msg_size*8 - len(msg_bits)
 
     for i in range(firstPixel,last_pixel,3):
         idxPixel = i//3
         r, g, b, a = pixels[idxPixel%width, idxPixel//width]
-        msg_size_bits.append(r&1)
-        if (i+1) < SIZE_STORAGE+msg_size:
-            msg_size_bits.append(g&1)
-        if (i+2) < SIZE_STORAGE+msg_size:
-            msg_size_bits.append(b&1)
+        msg_bits.append(r&1)
+        if (i+1) < last_pixel:
+            msg_bits.append(g&1)
+        if (i+2) < last_pixel:
+            msg_bits.append(b&1)
+
+    return bytearray_to_msg(msg_bits)
 
 def open_img(path: str):
     return Image.open(path)
+
+if __name__ == "__main__":
+    # hide_msg("lol",".\images\Blanc.png",".\images\loltest.png")
+    print(find_msg(".\images\loltest.png"))
+    print("Done")
