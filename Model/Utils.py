@@ -110,6 +110,6 @@ def open_img(path: str):
     return Image.open(path)
 
 if __name__ == "__main__":
-    # hide_msg("lol",".\images\Blanc.png",".\images\loltest.png")
+    hide_msg("lol",".\images\Blanc.png",".\images\loltest.png")
     print(find_msg(".\images\loltest.png"))
     print("Done")
