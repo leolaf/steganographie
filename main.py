@@ -1,27 +1,17 @@
 import sys
 import argparse
-from Model import Steganography
-
-def help():
-    print("pas comme ça")
-
-# Options
-options = "hmo:"
- 
-# Long options
-long_options = ["Help", "My_file", "Output="]
- 
+from Model import Steganography 
 
 if __name__ == "__main__" :
     parser = argparse.ArgumentParser(description='###  Steganography tool  ###')
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("-H", "--hide", action="store_true", help = "Hide messsage in image -i <image> -m <message> -o <output>")
+    group.add_argument("-H", "--hide", action="store_true", help = "Hide messsage in image -i <image> -o <output> -m <message>")
     group.add_argument("-F", "--find", action="store_true", help = "Find messsage in image -i <image>")
     parser.add_argument("-i", "--image", dest="image", help="Image to hide or find message in -i <image>")
-    parser.add_argument("-m", "--message", dest="msg", help="Message to hide in image -i <image> -m <message>")
-    parser.add_argument("-o", "--output", dest="output", help="Output image -i <image> -m <message> -o <output>")
+    parser.add_argument("-m", "--message", dest="msg", help="Message to hide in image -i <image> -o <output> -m <message>")
+    parser.add_argument("-o", "--output", dest="output", help="Output image -i <image> -o <output> -m <message>")
     args = parser.parse_args()
-    
+
     if args.hide:
         if args.image is None or args.msg is None:
             parser.error("Missing arguments")

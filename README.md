@@ -11,8 +11,8 @@
 Exemples d'utilisation :
 
 ```sh
-python .\main.py -H -i .\images\Blanc.png -m "Vivement les vacances !" -o ./images/sortie.png
-python .\main.py --hide -i .\images\Blanc.png -m "Vivement les vacances !" -o ./images/sortie.png
+python .\main.py -H -i .\images\Blanc.png -o ./images/sortie.png -m "Vivement les vacances !"
+python .\main.py --hide -i .\images\Blanc.png -o ./images/sortie.png -m "Vivement les vacances !"
 ```
 
 
