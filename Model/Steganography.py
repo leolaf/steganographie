@@ -1,5 +1,5 @@
 from PIL import Image
-import BinaryOperations
+from .BinaryOperations import BinaryOperations
 
 class Steganography:
 
@@ -8,11 +8,11 @@ class Steganography:
     def __init__(self) -> None:
         pass
 
-    @classmethod
+    @staticmethod
     def open_img(path: str):
         return Image.open(path)
 
-    @classmethod
+    @staticmethod
     def hide_msg(msg: str, initial_img_path: str, target_img_path: str):
         msg_size = len(msg) 
         img = Steganography.open_img(initial_img_path)
@@ -35,7 +35,7 @@ class Steganography:
     
         img.save(target_img_path)
     
-    @classmethod
+    @staticmethod
     def find_msg(img_path:str):
         img = Steganography.open_img(img_path)
         pixels = img.load()

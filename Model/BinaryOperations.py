@@ -4,11 +4,11 @@ class BinaryOperations:
     def __init__(self) -> None:
         pass
 
-    @classmethod
+    @staticmethod
     def get_bit(number: int, index: int):
         return (number>>index)&1
 
-    @classmethod
+    @staticmethod
     def msg_to_bytearray(msg):
         ascii_values = [ord(letter) for letter in msg]
         bits = []
@@ -17,7 +17,7 @@ class BinaryOperations:
                 bits.append(BinaryOperations.get_bit(value,i))
         return bits
 
-    @classmethod
+    @staticmethod
     def bytearray_to_int(ba):
         ba.reverse()
         res = 0
@@ -26,18 +26,18 @@ class BinaryOperations:
             res |= bit
         return res
 
-    @classmethod
+    @staticmethod
     def bytearray_to_chr(ba):
         return chr(BinaryOperations.bytearray_to_int(ba))
 
-    @classmethod
+    @staticmethod
     def bytearray_to_msg(ba):
         res = ""
         for i in range(0,len(ba),8):
             res += BinaryOperations.bytearray_to_chr(ba[i:i+8])
         return res
 
-    @classmethod
+    @staticmethod
     def int_to_bytearray(nb,size):
         bits = []
         for i in range(size):
