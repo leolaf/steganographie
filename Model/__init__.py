@@ -1,1 +1,1 @@
-from .Utils import hide_msg, find_msg
+from .Steganography import Steganography
