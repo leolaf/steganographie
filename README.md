@@ -17,6 +17,6 @@ python .\main.py --hide -i .\images\Blanc.png -m "Vivement les vacances !" -o ./
 
 Exemples d'utilisation :
 ```sh
-python .\main.py --find -i .\images\sortie.png
 python .\main.py -F -i .\images\sortie.png
+python .\main.py --find -i .\images\sortie.png
 ```
