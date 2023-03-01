@@ -25,7 +25,6 @@ if __name__ == "__main__" :
     if args.hide:
         if args.image is None or args.msg is None:
             parser.error("Missing arguments")
-            exit(1)
         out = args.output
         if out is None:
             out = "output.png"
@@ -33,5 +32,4 @@ if __name__ == "__main__" :
     if args.find:
         if args.image is None:
             parser.error("Missing arguments")
-            exit(1)
         print(Steganography.find_msg(args.image))
